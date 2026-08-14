@@ -44,6 +44,9 @@ jobs:
       - name: Generate localization code
         run: flutter gen-l10n
 
+      - name: Validate repository, assets, and translations
+        run: dart run tool/validate_project.dart
+
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed lib test
 
