@@ -3,8 +3,8 @@
 | Phase | Scope | Status |
 |---:|---|---|
 | 1 | Product definition, repository, architecture, design foundation | In progress |
-| 2 | Core deterministic physics and rules | Not started |
-| 3 | Main UI and offline gameplay | Not started |
+| 2 | Core deterministic physics and rules | Complete |
+| 3 | Main UI and offline gameplay | In progress |
 | 4 | Rules-respecting AI | Not started |
 | 5 | Local multiplayer | Not started |
 | 6 | Private and casual online architecture | Not started |

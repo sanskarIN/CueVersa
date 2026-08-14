@@ -2,7 +2,7 @@
 
 - Product: CueVerse
 - Version: `1.0.0+1`
-- Phase: 1 — repository foundation
+- Phase: 3 — main UI and offline gameplay
 - Release maturity: pre-alpha
 - Canonical repository: `https://github.com/sanskarIN/CueVersa`
 - Android application ID: `io.github.sanskarin.cueversa`
@@ -10,18 +10,19 @@
 
 ## Current verified state
 
-The repository has a generated Android Flutter scaffold and security-conscious
-Android defaults. Full application and gameplay verification is not complete.
-No release candidate claim is made.
+The repository has a generated Android Flutter scaffold, security-conscious
+Android defaults, a deterministic cue-physics engine, 8-ball rules, 9-ball
+rules, and 33 passing core regressions. The interactive application shell is
+the active batch. No release candidate claim is made.
 
 ## Active release gates
 
 | Gate | Status |
 |---|---|
 | Android project generated | Passed |
-| Deterministic physics tests | Pending |
-| 8-ball rules tests | Pending |
-| 9-ball rules tests | Pending |
+| Deterministic physics tests | Passed (16 core/vector + physics tests) |
+| 8-ball rules tests | Passed (11 tests) |
+| 9-ball rules tests | Passed (6 tests) |
 | Offline practice and vs AI | Pending |
 | Local two-player | Pending |
 | English and Hindi localization | Pending |

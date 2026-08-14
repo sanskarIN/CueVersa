@@ -13,18 +13,18 @@ Never recreate the repository or discard existing work. At every continuation:
 
 ## Current cursor
 
-- Phase: 1 of 15
-- Batch: Android Flutter foundation
-- Last completed file: `PROJECT_STATUS.md`
-- Exact next file: `lib/features/game/domain/vector2.dart`
-- Next check: `flutter pub get` after gameplay foundation files are present
+- Phase: 3 of 15
+- Batch: localized application shell and offline table
+- Last completed file: `test/core/nine_ball_rules_test.dart`
+- Exact next file: `lib/app/app_settings.dart`
+- Next check: focused settings persistence tests
 - Blocking issue: none
 
 ## Ordered continuation queue
 
-- [ ] Deterministic physics primitives and table simulator
-- [ ] Physics regression tests
-- [ ] 8-ball and 9-ball rule state machines and tests
+- [x] Deterministic physics primitives and table simulator
+- [x] Physics regression tests
+- [x] 8-ball and 9-ball rule state machines and tests
 - [ ] Application shell, navigation, design system, and localization
 - [ ] Interactive practice, vs AI, and local two-player table
 - [ ] Persistence, progression, achievements, missions, and statistics
