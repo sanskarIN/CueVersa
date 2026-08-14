@@ -7,6 +7,8 @@
 - Canonical repository: `https://github.com/sanskarIN/CueVersa`
 - Android application ID: `io.github.sanskarin.cueversa`
 - Toolchain: Flutter 3.44.7 / Dart 3.12.2 / Kotlin / Gradle
+- Remote sync: local `main` is ahead of `origin/main`; push is blocked by the
+  execution approval usage limit recorded below
 
 ## Current verified state
 

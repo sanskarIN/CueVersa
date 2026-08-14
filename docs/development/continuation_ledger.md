@@ -22,6 +22,15 @@ Never recreate the repository or discard existing work. At every continuation:
   2026-08-20 15:01 local time; Flutter commands requiring access outside the
   workspace and GitHub push cannot currently be approved
 
+## Pending remote synchronization
+
+Local `main` contains eight implementation commits beyond `origin/main` at the
+time of the push attempt. A sandboxed push could not connect to GitHub port 443;
+the required escalated push was then rejected by the approval usage limit. Do
+not recreate or squash the work. After approval is available, verify `git
+status`, run the pending gates, append their results, commit the ledger, then
+execute `git push origin main`.
+
 ## Ordered continuation queue
 
 - [x] Deterministic physics primitives and table simulator
