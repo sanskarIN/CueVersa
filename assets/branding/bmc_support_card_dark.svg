@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="320" viewBox="0 0 960 320" role="img" aria-labelledby="title desc">
+  <title id="title">Support Sanskar on Buy Me a Coffee</title>
+  <desc id="desc">A dark original CueVerse support card with a coffee cup, heart, cue, and ball.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop stop-color="#07131F"/>
+      <stop offset="1" stop-color="#123F3B"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="320" rx="40" fill="url(#bg)" stroke="#52D1B2" stroke-width="3"/>
+  <circle cx="145" cy="160" r="92" fill="#F7C948" opacity=".14"/>
+  <path d="M85 112h120v92c0 28-22 50-50 50h-20c-28 0-50-22-50-50z" fill="#F6F8FA"/>
+  <path d="M205 136h18c33 0 33 54 0 54h-18" fill="none" stroke="#F6F8FA" stroke-width="18"/>
+  <path d="M122 92c-18-24 20-26 2-52M164 92c-18-24 20-26 2-52" fill="none" stroke="#F7C948" stroke-width="10" stroke-linecap="round"/>
+  <path d="M120 150c25-30 60 7 25 38-35-31 0-68 25-38" fill="#FF6369"/>
+  <text x="285" y="124" fill="#9FE7D7" font-family="sans-serif" font-size="28" font-weight="700" letter-spacing="2">CUEVERSE COMMUNITY</text>
+  <text x="285" y="182" fill="#F6F8FA" font-family="sans-serif" font-size="42" font-weight="800">Support this project</text>
+  <text x="285" y="230" fill="#F7C948" font-family="sans-serif" font-size="34" font-weight="700">Buy Me a Coffee ↗</text>
+  <path d="M790 74l96 172" stroke="#9FE7D7" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="866" cy="242" r="25" fill="#F6F8FA" stroke="#07131F" stroke-width="5"/>
+</svg>
