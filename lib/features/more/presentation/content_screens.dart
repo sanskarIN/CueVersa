@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../app/app_progress.dart';
+import '../../../core/constants/project_identity.dart';
 import '../../../core/constants/project_links.dart';
 import '../../../core/utils/external_links.dart';
 import '../../../core/widgets/brand_widgets.dart';
@@ -117,7 +118,7 @@ class AboutScreen extends StatelessWidget {
           Text(localizations.tagline, textAlign: TextAlign.center),
           const SizedBox(height: 8),
           Text(
-            localizations.versionLabel('1.0.0+1'),
+            localizations.versionLabel(ProjectIdentity.version),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 24),
@@ -139,14 +140,32 @@ class AboutScreen extends StatelessWidget {
             leading: const Icon(Icons.privacy_tip_outlined),
             title: Text(localizations.privacyPolicy),
             subtitle: Text(localizations.offlineOnly),
+            onTap: () => Navigator.of(context).push<void>(
+              MaterialPageRoute<void>(
+                builder: (context) =>
+                    const LegalScreen(kind: LegalDocumentKind.privacy),
+              ),
+            ),
           ),
           ListTile(
             leading: const Icon(Icons.gavel_rounded),
             title: Text(localizations.terms),
+            onTap: () => Navigator.of(context).push<void>(
+              MaterialPageRoute<void>(
+                builder: (context) =>
+                    const LegalScreen(kind: LegalDocumentKind.terms),
+              ),
+            ),
           ),
           ListTile(
             leading: const Icon(Icons.receipt_long_rounded),
             title: Text(localizations.thirdPartyNotices),
+            onTap: () => showLicensePage(
+              context: context,
+              applicationName: localizations.appName,
+              applicationVersion: ProjectIdentity.version,
+              applicationLegalese: localizations.openSource,
+            ),
           ),
           const SizedBox(height: 18),
           const BmcSupportCard(),
@@ -237,6 +256,54 @@ class DeveloperOptionsScreen extends StatefulWidget {
 
   @override
   State<DeveloperOptionsScreen> createState() => _DeveloperOptionsScreenState();
+}
+
+enum LegalDocumentKind { privacy, terms }
+
+class LegalScreen extends StatelessWidget {
+  const LegalScreen({required this.kind, super.key});
+
+  final LegalDocumentKind kind;
+
+  @override
+  Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
+    final title = kind == LegalDocumentKind.privacy
+        ? localizations.privacyPolicy
+        : localizations.terms;
+    final summaries = kind == LegalDocumentKind.privacy
+        ? <String>[
+            localizations.secureLocalData,
+            localizations.notificationsDisabled,
+            localizations.offlineOnly,
+          ]
+        : <String>[
+            localizations.freeAndFair,
+            localizations.supportDisclaimer,
+            localizations.notOfficialRules,
+          ];
+    return Scaffold(
+      appBar: AppBar(title: Text(title)),
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        children: <Widget>[
+          for (final summary in summaries)
+            Card(
+              margin: const EdgeInsets.only(bottom: 12),
+              child: Padding(
+                padding: const EdgeInsets.all(18),
+                child: Text(
+                  summary,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
+              ),
+            ),
+          const SizedBox(height: 24),
+          const CreatorWatermark(),
+        ],
+      ),
+    );
+  }
 }
 
 class _DeveloperOptionsScreenState extends State<DeveloperOptionsScreen> {

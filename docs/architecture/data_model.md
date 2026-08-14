@@ -6,9 +6,9 @@ app-private and non-secret.
 | Prefix | Examples | Owner |
 |---|---|---|
 | `settings.` | theme, locale, high contrast, reduced motion, audio, controls | `AppSettings` |
-| `progress.` | XP, matches, wins, streak, shots, pots | `AppProgress` |
+| `progress.` | XP, matches, wins, streak, shots, successful shots, pots | `AppProgress` |
 
-Derived values such as level, XP-in-level, and accuracy are recalculated rather
+Derived values such as level, XP-in-level, and shot accuracy are recalculated rather
 than redundantly stored. Invalid aim sensitivity is clamped to `[0.5, 2.0]`;
 unknown themes/locales fall back to system/English.
 

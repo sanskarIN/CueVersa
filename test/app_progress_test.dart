@@ -22,7 +22,8 @@ void main() {
 
     expect(progress.shots, 2);
     expect(progress.pots, 2);
-    expect(progress.accuracy, 1);
+    expect(progress.successfulShots, 1);
+    expect(progress.accuracy, .5);
     expect(progress.matches, 3);
     expect(progress.wins, 2);
     expect(progress.bestStreak, 2);

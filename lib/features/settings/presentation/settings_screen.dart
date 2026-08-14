@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../app/app_progress.dart';
 import '../../../app/app_settings.dart';
+import '../../../core/constants/project_identity.dart';
 import '../../../core/widgets/brand_widgets.dart';
 import '../../../l10n/app_localizations.dart';
 import '../../more/presentation/content_screens.dart';
@@ -253,9 +254,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
               title: localizations.settingsLegal,
               icon: Icons.gavel_outlined,
               children: <Widget>[
-                ListTile(title: Text(localizations.privacyPolicy)),
-                ListTile(title: Text(localizations.terms)),
-                ListTile(title: Text(localizations.thirdPartyNotices)),
+                ListTile(
+                  title: Text(localizations.privacyPolicy),
+                  onTap: () =>
+                      _open(const LegalScreen(kind: LegalDocumentKind.privacy)),
+                ),
+                ListTile(
+                  title: Text(localizations.terms),
+                  onTap: () =>
+                      _open(const LegalScreen(kind: LegalDocumentKind.terms)),
+                ),
+                ListTile(
+                  title: Text(localizations.thirdPartyNotices),
+                  onTap: () => showLicensePage(
+                    context: context,
+                    applicationName: localizations.appName,
+                    applicationVersion: ProjectIdentity.version,
+                    applicationLegalese: localizations.openSource,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 8),
@@ -272,7 +289,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ListTile(
                     leading: const Icon(Icons.info_outline_rounded),
                     title: Text(localizations.about),
-                    subtitle: Text(localizations.versionLabel('1.0.0+1')),
+                    subtitle: Text(
+                      localizations.versionLabel(ProjectIdentity.version),
+                    ),
                     onTap: _handleVersionTap,
                     trailing: IconButton(
                       tooltip: localizations.about,

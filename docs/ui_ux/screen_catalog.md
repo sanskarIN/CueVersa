@@ -7,7 +7,7 @@
 | Mode/rules selection | Implemented | 8/9-ball and offline mode choice |
 | AI difficulty | Implemented bottom sheet | Six fair planning levels |
 | Game table / spin controls | Implemented | Aim, power, spin, simulation |
-| Pause | Android back/system behavior; dedicated overlay planned | Interrupt match safely |
+| Pause | Implemented modal with lifecycle freeze/resume/restart/quit | Interrupt match safely |
 | Results | Implemented dialog | Winner and restart/quit |
 | Practice | Implemented | Unrestricted offline table |
 | Challenges/missions/achievements | Foundation UI | Local progression presentation |
@@ -17,6 +17,7 @@
 | Settings | Implemented | Grouped preferences and local data |
 | Support/BMC | Implemented | Optional support and contacts |
 | About/Open Source | Implemented | Version, repository, creator, legal links |
+| Privacy / Terms / license notices | Implemented localized summaries and license page | In-app legal access |
 | Developer options | Implemented safe local panel | Seed/diagnostic controls |
 | Private room/matchmaking/store/shot review/trick shots | Future | Not represented as shipped |
 

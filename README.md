@@ -8,7 +8,7 @@ offline play, fair competition, and a local-first data model. It does not copy
 the identity, art, interface, progression, or proprietary assets of any
 commercial pool title.
 
-> Current release channel: early development (`1.0.0+1`). See
+> Current release channel: early development (`0.1.0+1`). See
 > [PROJECT_STATUS.md](PROJECT_STATUS.md) for verified capabilities and gates.
 
 ## Run locally

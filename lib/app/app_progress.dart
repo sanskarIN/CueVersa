@@ -13,6 +13,7 @@ final class AppProgress extends ChangeNotifier {
   static const _currentStreakKey = 'progress.currentStreak';
   static const _shotsKey = 'progress.shots';
   static const _potsKey = 'progress.pots';
+  static const _successfulShotsKey = 'progress.successfulShots';
 
   final SharedPreferences _preferences;
   int _xp = 0;
@@ -22,6 +23,7 @@ final class AppProgress extends ChangeNotifier {
   int _currentStreak = 0;
   int _shots = 0;
   int _pots = 0;
+  int _successfulShots = 0;
 
   static AppProgress load(SharedPreferences preferences) {
     return AppProgress._(preferences)
@@ -31,7 +33,8 @@ final class AppProgress extends ChangeNotifier {
       .._bestStreak = preferences.getInt(_bestStreakKey) ?? 0
       .._currentStreak = preferences.getInt(_currentStreakKey) ?? 0
       .._shots = preferences.getInt(_shotsKey) ?? 0
-      .._pots = preferences.getInt(_potsKey) ?? 0;
+      .._pots = preferences.getInt(_potsKey) ?? 0
+      .._successfulShots = preferences.getInt(_successfulShotsKey) ?? 0;
   }
 
   int get xp => _xp;
@@ -40,15 +43,19 @@ final class AppProgress extends ChangeNotifier {
   int get bestStreak => _bestStreak;
   int get shots => _shots;
   int get pots => _pots;
+  int get successfulShots => _successfulShots;
   int get level => 1 + (_xp ~/ 500);
   int get xpIntoLevel => _xp % 500;
-  double get accuracy => _shots == 0 ? 0 : _pots / _shots;
+  double get accuracy => _shots == 0 ? 0 : _successfulShots / _shots;
 
   void recordShot({required int pocketedBalls}) {
     _shots++;
-    _pots += pocketedBalls.clamp(0, 15);
+    final boundedPots = pocketedBalls.clamp(0, 15);
+    _pots += boundedPots;
+    if (boundedPots > 0) _successfulShots++;
     unawaited(_preferences.setInt(_shotsKey, _shots));
     unawaited(_preferences.setInt(_potsKey, _pots));
+    unawaited(_preferences.setInt(_successfulShotsKey, _successfulShots));
     notifyListeners();
   }
 
@@ -74,6 +81,7 @@ final class AppProgress extends ChangeNotifier {
     _currentStreak = 0;
     _shots = 0;
     _pots = 0;
+    _successfulShots = 0;
     for (final key in <String>[
       _xpKey,
       _matchesKey,
@@ -82,6 +90,7 @@ final class AppProgress extends ChangeNotifier {
       _currentStreakKey,
       _shotsKey,
       _potsKey,
+      _successfulShotsKey,
     ]) {
       await _preferences.remove(key);
     }

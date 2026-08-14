@@ -41,7 +41,7 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   static const _table = TableGeometry();
   late final Ticker _ticker;
   late PhysicsWorld _world;
@@ -51,6 +51,9 @@ class _GameScreenState extends State<GameScreen>
   double _power = .58;
   bool _shotInProgress = false;
   bool _aiScheduled = false;
+  bool _pauseOpen = false;
+  bool _allowPop = false;
+  bool _resumeTickerOnForeground = false;
   int? _firstContact;
   final List<int> _pocketed = <int>[];
   final Set<int> _breakRailBalls = <int>{};
@@ -68,12 +71,14 @@ class _GameScreenState extends State<GameScreen>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _ticker = createTicker(_onTick);
     _resetMatch(notify: false);
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _ticker.dispose();
     super.dispose();
   }
@@ -88,68 +93,91 @@ class _GameScreenState extends State<GameScreen>
         : widget.mode == GameMode.versusAi
         ? localizations.aiPlayer
         : localizations.playerTwo;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(localizations.gameTable),
-        actions: <Widget>[
-          IconButton(
-            tooltip: localizations.resetRack,
-            onPressed: _shotInProgress ? null : _confirmReset,
-            icon: const Icon(Icons.refresh_rounded),
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final landscape = constraints.maxWidth > constraints.maxHeight;
-            final table = Padding(
-              padding: const EdgeInsets.all(12),
-              child: PoolTableView(
-                world: _world,
-                aimDirection: _aimDirection,
-                showAimGuide: widget.mode == GameMode.practice || !_isAiTurn,
-                semanticsLabel: localizations.tableBalls(
-                  _world.balls.where((ball) => !ball.isPocketed).length,
+    return PopScope(
+      canPop: _allowPop,
+      onPopInvokedWithResult: (didPop, result) {
+        if (!didPop) unawaited(_showPause());
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(localizations.gameTable),
+          actions: <Widget>[
+            IconButton(
+              tooltip: localizations.resetRack,
+              onPressed: _shotInProgress ? null : _confirmReset,
+              icon: const Icon(Icons.refresh_rounded),
+            ),
+          ],
+        ),
+        body: SafeArea(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final landscape = constraints.maxWidth > constraints.maxHeight;
+              final table = Padding(
+                padding: const EdgeInsets.all(12),
+                child: PoolTableView(
+                  world: _world,
+                  aimDirection: _aimDirection,
+                  showAimGuide: widget.mode == GameMode.practice || !_isAiTurn,
+                  semanticsLabel: localizations.tableBalls(
+                    _world.balls.where((ball) => !ball.isPocketed).length,
+                  ),
+                  onAimChanged: _shotInProgress || _isAiTurn
+                      ? (_) {}
+                      : (direction) =>
+                            setState(() => _aimDirection = direction),
                 ),
-                onAimChanged: _shotInProgress || _isAiTurn
-                    ? (_) {}
-                    : (direction) => setState(() => _aimDirection = direction),
-              ),
-            );
-            final controls = _Controls(
-              playerLabel: playerLabel,
-              powerLabel: localizations.power,
-              spinLabel: localizations.spin,
-              shootLabel: localizations.shoot,
-              aimHint: localizations.aimHint,
-              power: _power,
-              tipOffset: _tipOffset,
-              enabled: !_shotInProgress && !_isAiTurn,
-              leftHanded: widget.settings.leftHanded,
-              vertical: landscape,
-              onPowerChanged: (value) => setState(() => _power = value),
-              onSpinChanged: (value) => setState(() => _tipOffset = value),
-              onShoot: _shoot,
-            );
-            if (landscape) {
-              return Row(
+              );
+              final controls = _Controls(
+                playerLabel: playerLabel,
+                powerLabel: localizations.power,
+                spinLabel: localizations.spin,
+                shootLabel: localizations.shoot,
+                aimHint: localizations.aimHint,
+                power: _power,
+                tipOffset: _tipOffset,
+                enabled: !_shotInProgress && !_isAiTurn,
+                leftHanded: widget.settings.leftHanded,
+                vertical: landscape,
+                onPowerChanged: (value) => setState(() => _power = value),
+                onSpinChanged: (value) => setState(() => _tipOffset = value),
+                onShoot: _shoot,
+              );
+              if (landscape) {
+                return Row(
+                  children: <Widget>[
+                    Expanded(flex: 7, child: table),
+                    SizedBox(width: 290, child: controls),
+                  ],
+                );
+              }
+              return Column(
                 children: <Widget>[
-                  Expanded(flex: 7, child: table),
-                  SizedBox(width: 290, child: controls),
+                  Expanded(child: Center(child: table)),
+                  controls,
                 ],
               );
-            }
-            return Column(
-              children: <Widget>[
-                Expanded(child: Center(child: table)),
-                controls,
-              ],
-            );
-          },
+            },
+          ),
         ),
       ),
     );
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      if (_resumeTickerOnForeground && _shotInProgress && !_pauseOpen) {
+        _lastFrame = Duration.zero;
+        _ticker.start();
+      }
+      _resumeTickerOnForeground = false;
+      return;
+    }
+    if (_ticker.isActive) {
+      _resumeTickerOnForeground = true;
+      _ticker.stop();
+    }
   }
 
   void _shoot() {
@@ -308,6 +336,7 @@ class _GameScreenState extends State<GameScreen>
     _nineBallState = NineBallState();
     _shotInProgress = false;
     _aiScheduled = false;
+    _allowPop = false;
     _aimDirection = const Vector2(1, 0);
     _tipOffset = const Vector2.zero();
     _ticker.stop();
@@ -360,7 +389,7 @@ class _GameScreenState extends State<GameScreen>
           TextButton(
             onPressed: () {
               Navigator.pop(context);
-              Navigator.pop(this.context);
+              _exitGame();
             },
             child: Text(localizations.quitMatch),
           ),
@@ -368,7 +397,62 @@ class _GameScreenState extends State<GameScreen>
       ),
     );
   }
+
+  Future<void> _showPause() async {
+    if (_pauseOpen || !mounted) return;
+    final localizations = AppLocalizations.of(context);
+    final wasTicking = _ticker.isActive;
+    if (wasTicking) _ticker.stop();
+    _pauseOpen = true;
+    final action = await showDialog<_PauseAction>(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        title: Text(localizations.pause),
+        actions: <Widget>[
+          FilledButton(
+            onPressed: () => Navigator.pop(context, _PauseAction.resume),
+            child: Text(localizations.resume),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, _PauseAction.restart),
+            child: Text(localizations.restart),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, _PauseAction.quit),
+            child: Text(localizations.quitMatch),
+          ),
+        ],
+      ),
+    );
+    _pauseOpen = false;
+    if (!mounted) return;
+    switch (action ?? _PauseAction.resume) {
+      case _PauseAction.resume:
+        if (wasTicking && _shotInProgress) {
+          _lastFrame = Duration.zero;
+          unawaited(_ticker.start());
+        }
+        break;
+      case _PauseAction.restart:
+        _resetMatch();
+        break;
+      case _PauseAction.quit:
+        _exitGame();
+        break;
+    }
+  }
+
+  void _exitGame() {
+    if (!mounted) return;
+    setState(() => _allowPop = true);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) Navigator.of(context).pop();
+    });
+  }
 }
+
+enum _PauseAction { resume, restart, quit }
 
 class _Controls extends StatelessWidget {
   const _Controls({

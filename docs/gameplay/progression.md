@@ -2,7 +2,8 @@
 
 Current local progression awards 150 XP for a player-one win and 60 XP for a
 loss; level is `1 + XP ~/ 500`. It records matches, wins, current/best streak,
-shots, potted object balls, and derived pots-per-shot accuracy. Values carry no
+shots, successful potting shots, potted object balls, and derived successful-shot
+accuracy. Values carry no
 cash value, cannot be purchased, and are not authoritative online rankings.
 
 Challenge, mission, achievement, and cosmetic screens are foundations. They do
