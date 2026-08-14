@@ -11,7 +11,7 @@
 | Accessibility | BMC/table semantics widget tests passing | TalkBack and large text | Automated passed; manual pending |
 | Android lifecycle/orientation | Widget/integration tests | Emulator/device matrix | Pending |
 | Performance | Determinism/timing checks | Profile-mode trace | Pending |
-| Release | Analyze/test/build CI | Signed AAB smoke test | Pending |
+| Release | Analyze/test/debug APK passed locally; CI defined | Signed AAB smoke test | In progress |
 
 Executed results are recorded in `what_changed.md`; this table never implies a
 test passed solely because it is planned.

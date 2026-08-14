@@ -7,16 +7,16 @@
 | 3 | Main UI and offline gameplay | Complete |
 | 4 | Rules-respecting AI | Complete for offline v1 |
 | 5 | Local multiplayer | Complete for local pass-and-play v1 |
-| 6 | Private and casual online architecture | Not started |
+| 6 | Private and casual online architecture | Authority design complete; service not started |
 | 7 | Progression, achievements, missions | Foundation complete |
 | 8 | Settings, accessibility, localization | Complete for v1 |
-| 9 | Ethical monetization foundations | Not started |
+| 9 | Ethical monetization foundations | Policy/design complete; only BMC shipped |
 | 10 | Advanced modes and content | Not started |
-| 11 | Testing, performance, hardening | Not started |
+| 11 | Testing, performance, hardening | In progress |
 | 12 | Documentation, legal, release preparation | In progress |
 | 13 | Beta stabilization | Not started |
 | 14 | Production release candidate | Not started |
-| 15 | Post-launch roadmap | Not started |
+| 15 | Post-launch roadmap | Planning complete; execution future |
 
 A phase becomes complete only after its implementation and applicable checks
 are recorded in `what_changed.md`.

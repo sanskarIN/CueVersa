@@ -15,9 +15,9 @@ Never recreate the repository or discard existing work. At every continuation:
 
 - Phase: 12 of 15
 - Batch: documentation, CI, legal, and Android release hardening
-- Last completed file: `test/app_widget_test.dart`
-- Exact next file: `docs/architecture/technology_decision.md`
-- Next check: documentation required-file inventory
+- Last completed file: `docs/development/known_issues.md`
+- Exact next task: run full format/analyze/test after documentation commit
+- Next check: unsigned release AAB build and R8 validation
 - Blocking issue: none
 
 ## Ordered continuation queue

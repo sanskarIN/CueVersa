@@ -1,0 +1,32 @@
+name: Physics regression
+description: Report a reproducible deterministic simulation issue
+title: "physics: "
+labels: [bug, physics, triage]
+body:
+  - type: input
+    id: commit
+    attributes:
+      label: Commit SHA
+    validations:
+      required: true
+  - type: input
+    id: seed
+    attributes:
+      label: Deterministic seed or rack ordering
+  - type: textarea
+    id: shot
+    attributes:
+      label: Shot parameters
+      description: Direction vector, power, tip offset/spin, and engine tick rate.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Observed and expected result
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Minimal test or trace

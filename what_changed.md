@@ -100,3 +100,45 @@ results. “Passed” is used only for commands actually executed.
   remains scheduled after documentation and Android hardening.
 - Exact next task: add all required open-source, architecture, privacy, legal,
   monetization, UI/UX, testing, release, roadmap, and GitHub workflow files.
+
+## 2026-08-14 — Public repository and release documentation
+
+- Added changelog, public roadmap, NOTICE/third-party inventory, contribution
+  guide, code of conduct, security policy, privacy template, and terms template.
+- Added issue forms for bugs/features/physics, PR template, funding link,
+  Dependabot, Flutter Android CI, and Java/Kotlin CodeQL workflow.
+- Documented technology decision, layered architecture, local data model,
+  future server authority, every major language/framework/plugin, brand/assets,
+  BMC behavior, design system, navigation, accessibility, responsive layout,
+  animation, haptics, contrast, typography, and screen status.
+- Added privacy data map/retention/permissions, threat model, secure development,
+  licensing and legal/privacy review checklists.
+- Added ethical revenue/fairness/store/ads/BMC/premium policies; no ads, billing,
+  wagering, loot boxes, paid ranked advantage, or donation gating was added.
+- Added gameplay rules/controls/AI/progression/offline-mode docs, feature status,
+  upcoming roadmap/status/premium files, suggestion process, test strategy,
+  release matrix, Android manual matrix, signing, Play checklist, release-note
+  template, developer setup, and commit/continuation guidance.
+- Verified the required documentation and GitHub file inventory with `rg --files`.
+- Exact next task: finish Android icon/splash/signing hardening and validate APK/AAB.
+
+## 2026-08-14 — Android resource and build hardening
+
+- Replaced five Flutter scaffold launcher PNGs with original CueVerse legacy
+  vector, round, and Android adaptive icon resources; added original native
+  splash vector and Android 12 splash theme with no artificial delay.
+- Changed release signing to load ignored `key.properties` only when supplied;
+  production artifacts no longer silently use the debug key. Added original
+  round icon manifest metadata.
+- First debug APK build exposed Kotlin incremental-cache failures because pub
+  plugin sources were on `C:` and the workspace on `E:`. Stopped the attempt,
+  disabled cross-drive Kotlin incremental state, selected in-process compilation,
+  ran `flutter clean`, restored locked dependencies, stopped stale Gradle daemon,
+  and rebuilt.
+- Checks passed: clean `flutter build apk --debug` in 1081.8 seconds. Artifact:
+  `build/app/outputs/flutter-apk/app-debug.apk`, 150,954,913 bytes, SHA-256
+  `16863665dfceb5218b6f8b3272f97309b95051ece96b8b2d90789d5a40a8c8b7`.
+- Nonfatal environment warnings: Flutter `Zone.Identifier`; Android installed
+  SDK command-line tooling understands XML through version 3 but encountered 4.
+- Exact next task: run unsigned release AAB/R8 validation, then final format,
+  analyzer, complete tests, repository audit, commits, and GitHub push.

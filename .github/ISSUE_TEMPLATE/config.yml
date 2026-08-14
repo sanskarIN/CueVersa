@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Private security report
+    url: mailto:supportramsandesh@gmail.com
+    about: Report vulnerabilities privately; never post exploits or secrets.
+  - name: Support Sanskar
+    url: https://buymeacoffee.com/sanskarIN
+    about: Optional project support; it does not guarantee features or priority.

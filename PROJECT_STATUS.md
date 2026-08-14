@@ -29,9 +29,9 @@ No release candidate claim is made.
 | English and Hindi localization | Implemented; review status tracked |
 | Analyzer has zero errors | Passed after UI batch |
 | Tests have zero known failures | Passed; final rerun scheduled |
-| Android debug APK builds | Pending |
-| Android release AAB configuration | In progress |
-| License and notices reviewed | In progress |
+| Android debug APK builds | Passed; SHA recorded in work log |
+| Android release AAB configuration | Configured; unsigned/signed build pending |
+| License and notices reviewed | Initial inventory complete; release review pending |
 
 See `docs/development/phase_status.md` and
 `docs/development/continuation_ledger.md` for the exact continuation point.
