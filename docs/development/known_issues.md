@@ -19,6 +19,11 @@
    debug build still completed; align Android Studio/command-line tools.
 7. The Flutter launcher prints a Windows `Zone.Identifier` cleanup warning in
    this development environment; Flutter continues normally.
+8. After the successful debug build, the execution approval service reported a
+   usage limit until 2026-08-20 15:01 local time. This currently blocks the
+   release AAB, post-hardening Flutter test rerun, and GitHub push from this
+   environment; prior full tests and the latest Dart analyzer/project validator
+   results remain recorded separately.
 
 ## Resolved
 
@@ -27,5 +32,7 @@
 - 2026-08-14: Repaired cross-drive Kotlin incremental-cache failures by using
   the in-process non-incremental compiler for this Windows workspace. A clean
   debug APK then built successfully.
+- 2026-08-14: Corrected “shot accuracy” to successful potting shots divided by
+  total shots; total potted balls remains a separate statistic.
 
 Issues are never removed from this file without a resolution entry and date.

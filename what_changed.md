@@ -142,3 +142,35 @@ results. “Passed” is used only for commands actually executed.
   SDK command-line tooling understands XML through version 3 but encountered 4.
 - Exact next task: run unsigned release AAB/R8 validation, then final format,
   analyzer, complete tests, repository audit, commits, and GitHub push.
+
+## 2026-08-14 — Lifecycle, legal access, localization validation, and QA fixes
+
+- Added app lifecycle observation and a dedicated Pause dialog. Backgrounding
+  freezes an active simulation; resume restarts its elapsed-time baseline so
+  inactive time is never injected. Back opens Resume/Restart/Quit and safe route
+  exit uses PopScope.
+- Added navigable in-app Privacy and Terms summaries plus Flutter's resolved
+  license page from About and Settings Legal.
+- Corrected shot accuracy from “potted balls per shot,” which could exceed 100%,
+  to successful potting shots divided by total shots; retained object-pot count
+  separately and updated local persistence/tests/docs.
+- Centralized the pre-alpha version as `0.1.0+1` and added validation that
+  pubspec, app identity, and project status agree.
+- External-link launching now handles thrown platform exceptions as the same
+  localized graceful failure used for a false launch result.
+- Added `tool/validate_project.dart` for required-file, English/Hindi key,
+  placeholder, accessible SVG, and version validation plus pseudolocalized
+  output; wired it into CI and added the translation completeness report.
+- Checks passed: `dart format lib test tool`; project validator with 133 matched
+  messages; `dart analyze --fatal-infos` with no issues.
+- Check not applicable: direct `dart test` cannot run Flutter tests because the
+  package intentionally uses `flutter_test` rather than a standalone `test`
+  dependency.
+- Blocker: requests for `flutter gen-l10n` and unsigned release AAB were rejected
+  by the execution approval service because its usage limit is exhausted until
+  2026-08-20 15:01 local time. The legal UI was safely expressed using already
+  generated localized keys, so generation is no longer pending; AAB/R8, the
+  post-hardening full Flutter test rerun, and GitHub push still require approval.
+- Exact next task: when execution approval is available, run `flutter test -r
+  expanded`, `flutter build appbundle --release`, record hashes/results, audit
+  Git status/secrets, commit the final ledger, and push `main`.

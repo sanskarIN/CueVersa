@@ -1,7 +1,7 @@
 # Project status
 
 - Product: CueVerse
-- Version: `1.0.0+1`
+- Version: `0.1.0+1`
 - Phase: 3 — main UI and offline gameplay
 - Release maturity: pre-alpha
 - Canonical repository: `https://github.com/sanskarIN/CueVersa`
@@ -28,9 +28,9 @@ No release candidate claim is made.
 | Local two-player | Implemented; full manual match pending |
 | English and Hindi localization | Implemented; review status tracked |
 | Analyzer has zero errors | Passed after UI batch |
-| Tests have zero known failures | Passed; final rerun scheduled |
+| Tests have zero known failures | Previous full suite passed; post-hardening rerun blocked by tool execution quota |
 | Android debug APK builds | Passed; SHA recorded in work log |
-| Android release AAB configuration | Configured; unsigned/signed build pending |
+| Android release AAB configuration | Configured; build request blocked by tool execution quota |
 | License and notices reviewed | Initial inventory complete; release review pending |
 
 See `docs/development/phase_status.md` and

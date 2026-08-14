@@ -16,9 +16,11 @@ Never recreate the repository or discard existing work. At every continuation:
 - Phase: 12 of 15
 - Batch: documentation, CI, legal, and Android release hardening
 - Last completed file: `docs/development/known_issues.md`
-- Exact next task: run full format/analyze/test after documentation commit
-- Next check: unsigned release AAB build and R8 validation
-- Blocking issue: none
+- Exact next task: rerun `flutter test` and `flutter build appbundle --release`
+- Next check: full Flutter test suite followed by unsigned release AAB/R8
+- Blocking issue: the execution approval service reported its usage limit until
+  2026-08-20 15:01 local time; Flutter commands requiring access outside the
+  workspace and GitHub push cannot currently be approved
 
 ## Ordered continuation queue
 
