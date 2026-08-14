@@ -332,6 +332,12 @@ abstract class AppLocalizations {
   /// **'Reset rack'**
   String get resetRack;
 
+  /// No description provided for @resetRackWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset the current table and start this match again?'**
+  String get resetRackWarning;
+
   /// No description provided for @pause.
   ///
   /// In en, this message translates to:
@@ -464,6 +470,12 @@ abstract class AppLocalizations {
   /// **'Language'**
   String get settingsLanguage;
 
+  /// No description provided for @settingsNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get settingsNotifications;
+
   /// No description provided for @settingsData.
   ///
   /// In en, this message translates to:
@@ -476,17 +488,113 @@ abstract class AppLocalizations {
   /// **'Privacy'**
   String get settingsPrivacy;
 
+  /// No description provided for @settingsSecurity.
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get settingsSecurity;
+
+  /// No description provided for @settingsOnline.
+  ///
+  /// In en, this message translates to:
+  /// **'Online & multiplayer'**
+  String get settingsOnline;
+
+  /// No description provided for @settingsLegal.
+  ///
+  /// In en, this message translates to:
+  /// **'Legal'**
+  String get settingsLegal;
+
   /// No description provided for @settingsPerformance.
   ///
   /// In en, this message translates to:
   /// **'Performance'**
   String get settingsPerformance;
 
+  /// No description provided for @batterySaver.
+  ///
+  /// In en, this message translates to:
+  /// **'Battery saver'**
+  String get batterySaver;
+
+  /// No description provided for @notificationsDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'CueVerse does not request notification permission in this release.'**
+  String get notificationsDisabled;
+
+  /// No description provided for @secureLocalData.
+  ///
+  /// In en, this message translates to:
+  /// **'Local data uses app-private storage and contains no passwords or payment credentials.'**
+  String get secureLocalData;
+
   /// No description provided for @settingsDeveloper.
   ///
   /// In en, this message translates to:
   /// **'Developer options'**
   String get settingsDeveloper;
+
+  /// No description provided for @fpsOverlay.
+  ///
+  /// In en, this message translates to:
+  /// **'FPS and performance overlay'**
+  String get fpsOverlay;
+
+  /// No description provided for @stateInspector.
+  ///
+  /// In en, this message translates to:
+  /// **'Game-state inspector'**
+  String get stateInspector;
+
+  /// No description provided for @deterministicSeed.
+  ///
+  /// In en, this message translates to:
+  /// **'Deterministic RNG seed'**
+  String get deterministicSeed;
+
+  /// No description provided for @featureFlags.
+  ///
+  /// In en, this message translates to:
+  /// **'Local feature flags'**
+  String get featureFlags;
+
+  /// No description provided for @localizationInspector.
+  ///
+  /// In en, this message translates to:
+  /// **'Localization inspector'**
+  String get localizationInspector;
+
+  /// No description provided for @networkDiagnostics.
+  ///
+  /// In en, this message translates to:
+  /// **'Safe network diagnostics'**
+  String get networkDiagnostics;
+
+  /// No description provided for @generateTestData.
+  ///
+  /// In en, this message translates to:
+  /// **'Generate local test data'**
+  String get generateTestData;
+
+  /// No description provided for @developerReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Reset developer tools'**
+  String get developerReset;
+
+  /// No description provided for @simulationRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Physics simulation: 240 fixed ticks/second'**
+  String get simulationRate;
+
+  /// No description provided for @diagnosticsSafe.
+  ///
+  /// In en, this message translates to:
+  /// **'Developer diagnostics never display secrets or grant paid entitlements.'**
+  String get diagnosticsSafe;
 
   /// No description provided for @theme.
   ///
@@ -781,6 +889,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'This profile is inspired by common rules and is not presented as an official tournament ruling.'**
   String get notOfficialRules;
+
+  /// No description provided for @tableBalls.
+  ///
+  /// In en, this message translates to:
+  /// **'{count, plural, =0{Empty pool table} =1{Pool table with one ball} other{Pool table with {count} balls}}'**
+  String tableBalls(int count);
 }
 
 class _AppLocalizationsDelegate

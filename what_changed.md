@@ -59,3 +59,44 @@ results. “Passed” is used only for commands actually executed.
 - Exact next task: replace the generated counter application with the localized
   CueVerse application shell, accessible navigation, settings state, and the
   interactive offline table.
+
+## 2026-08-14 — Localized offline application experience
+
+- Replaced the generated counter app with a responsive Material 3 CueVerse
+  shell, original programmatic logo, one-frame non-delaying splash, progress
+  hero, mode selection, support promotion, and navigation to challenges,
+  achievements, statistics, tutorial, rules, cosmetics, Settings, Support, and
+  About/Open Source screens.
+- Built the playable CustomPainter table, accessible table semantics, drag aim,
+  adjustable power, two-axis spin control, haptics, portrait/landscape control
+  layouts, practice, vs deterministic AI, and local two-player flows.
+- Connected real physics events to 8-ball/9-ball turn resolution, scratches,
+  ball-in-hand reset, win dialogs, shot statistics, XP, and match records.
+- Added deterministic geometry-based AI with legal-target filtering, clear-path
+  checks, pocket candidates, scratch-risk scoring, six planning/execution
+  difficulty profiles, and normal shot-parameter output through the shared
+  physics engine.
+- Added local-first persistent settings and progress for theme, locale,
+  accessibility, controls, audio/haptics, performance, developer unlock, XP,
+  matches, wins, streak, shots, pots, and accuracy. All destructive local-data
+  actions require confirmation.
+- Expanded polished English/Hindi localization, runtime locale switching,
+  pluralized table semantics, system/light/dark themes, high contrast, reduced
+  motion, left-handed controls, minimum touch sizing, and screen-reader labels.
+- Added grouped deep Settings sections, seven-tap developer unlock, safe local
+  diagnostics controls, privacy/security disclosures, and prominent BMC cards
+  that never appear during a match.
+- Static-analysis errors found and fixed: five `num`/`double` assignments,
+  one missing icon constant, one missing localization getter, one unused local,
+  and the obsolete generated widget test. Static analysis then reported no
+  issues.
+- Widget-test issue found and fixed: lazy sliver content meant the BMC card and
+  creator watermark were initially offstage. The tests now scroll the actual
+  home view before verifying them.
+- Checks passed: `dart format lib test`; `flutter analyze --fatal-infos` with no
+  issues; full suite initially passed 43 tests; focused updated widget suite
+  passed 3 tests including localized practice-table navigation.
+- Known failing tests: none after the focused repair. A final complete-suite run
+  remains scheduled after documentation and Android hardening.
+- Exact next task: add all required open-source, architecture, privacy, legal,
+  monetization, UI/UX, testing, release, roadmap, and GitHub workflow files.

@@ -127,6 +127,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get resetRack => 'रैक रीसेट करें';
 
   @override
+  String get resetRackWarning => 'मौजूदा टेबल रीसेट करके यह मैच फिर शुरू करें?';
+
+  @override
   String get pause => 'रोकें';
 
   @override
@@ -193,16 +196,70 @@ class AppLocalizationsHi extends AppLocalizations {
   String get settingsLanguage => 'भाषा';
 
   @override
+  String get settingsNotifications => 'सूचनाएँ';
+
+  @override
   String get settingsData => 'डेटा और स्टोरेज';
 
   @override
   String get settingsPrivacy => 'गोपनीयता';
 
   @override
+  String get settingsSecurity => 'सुरक्षा';
+
+  @override
+  String get settingsOnline => 'ऑनलाइन और मल्टीप्लेयर';
+
+  @override
+  String get settingsLegal => 'कानूनी';
+
+  @override
   String get settingsPerformance => 'प्रदर्शन';
 
   @override
+  String get batterySaver => 'बैटरी सेवर';
+
+  @override
+  String get notificationsDisabled =>
+      'इस रिलीज़ में क्यूवर्स सूचना अनुमति नहीं माँगता।';
+
+  @override
+  String get secureLocalData =>
+      'स्थानीय डेटा ऐप के निजी स्टोरेज में रहता है और इसमें पासवर्ड या भुगतान क्रेडेंशियल नहीं होते।';
+
+  @override
   String get settingsDeveloper => 'डेवलपर विकल्प';
+
+  @override
+  String get fpsOverlay => 'FPS और प्रदर्शन ओवरले';
+
+  @override
+  String get stateInspector => 'गेम-स्टेट इंस्पेक्टर';
+
+  @override
+  String get deterministicSeed => 'निश्चित RNG सीड';
+
+  @override
+  String get featureFlags => 'स्थानीय फीचर फ्लैग';
+
+  @override
+  String get localizationInspector => 'लोकलाइज़ेशन इंस्पेक्टर';
+
+  @override
+  String get networkDiagnostics => 'सुरक्षित नेटवर्क डायग्नोस्टिक्स';
+
+  @override
+  String get generateTestData => 'स्थानीय टेस्ट डेटा बनाएँ';
+
+  @override
+  String get developerReset => 'डेवलपर टूल रीसेट करें';
+
+  @override
+  String get simulationRate => 'भौतिकी सिमुलेशन: 240 निश्चित टिक/सेकंड';
+
+  @override
+  String get diagnosticsSafe =>
+      'डेवलपर डायग्नोस्टिक्स कभी सीक्रेट नहीं दिखाते या भुगतान अधिकार नहीं देते।';
 
   @override
   String get theme => 'थीम';
@@ -361,4 +418,16 @@ class AppLocalizationsHi extends AppLocalizations {
   @override
   String get notOfficialRules =>
       'यह प्रोफ़ाइल सामान्य नियमों से प्रेरित है और आधिकारिक टूर्नामेंट निर्णय नहीं है।';
+
+  @override
+  String tableBalls(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count बॉल वाली पूल टेबल',
+      one: 'एक बॉल वाली पूल टेबल',
+      zero: 'खाली पूल टेबल',
+    );
+    return '$_temp0';
+  }
 }

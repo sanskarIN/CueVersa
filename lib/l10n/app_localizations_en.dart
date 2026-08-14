@@ -127,6 +127,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resetRack => 'Reset rack';
 
   @override
+  String get resetRackWarning =>
+      'Reset the current table and start this match again?';
+
+  @override
   String get pause => 'Pause';
 
   @override
@@ -193,16 +197,70 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsLanguage => 'Language';
 
   @override
+  String get settingsNotifications => 'Notifications';
+
+  @override
   String get settingsData => 'Data & storage';
 
   @override
   String get settingsPrivacy => 'Privacy';
 
   @override
+  String get settingsSecurity => 'Security';
+
+  @override
+  String get settingsOnline => 'Online & multiplayer';
+
+  @override
+  String get settingsLegal => 'Legal';
+
+  @override
   String get settingsPerformance => 'Performance';
 
   @override
+  String get batterySaver => 'Battery saver';
+
+  @override
+  String get notificationsDisabled =>
+      'CueVerse does not request notification permission in this release.';
+
+  @override
+  String get secureLocalData =>
+      'Local data uses app-private storage and contains no passwords or payment credentials.';
+
+  @override
   String get settingsDeveloper => 'Developer options';
+
+  @override
+  String get fpsOverlay => 'FPS and performance overlay';
+
+  @override
+  String get stateInspector => 'Game-state inspector';
+
+  @override
+  String get deterministicSeed => 'Deterministic RNG seed';
+
+  @override
+  String get featureFlags => 'Local feature flags';
+
+  @override
+  String get localizationInspector => 'Localization inspector';
+
+  @override
+  String get networkDiagnostics => 'Safe network diagnostics';
+
+  @override
+  String get generateTestData => 'Generate local test data';
+
+  @override
+  String get developerReset => 'Reset developer tools';
+
+  @override
+  String get simulationRate => 'Physics simulation: 240 fixed ticks/second';
+
+  @override
+  String get diagnosticsSafe =>
+      'Developer diagnostics never display secrets or grant paid entitlements.';
 
   @override
   String get theme => 'Theme';
@@ -361,4 +419,16 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get notOfficialRules =>
       'This profile is inspired by common rules and is not presented as an official tournament ruling.';
+
+  @override
+  String tableBalls(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'Pool table with $count balls',
+      one: 'Pool table with one ball',
+      zero: 'Empty pool table',
+    );
+    return '$_temp0';
+  }
 }

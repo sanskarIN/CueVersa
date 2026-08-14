@@ -10,10 +10,11 @@
 
 ## Current verified state
 
-The repository has a generated Android Flutter scaffold, security-conscious
-Android defaults, a deterministic cue-physics engine, 8-ball rules, 9-ball
-rules, and 33 passing core regressions. The interactive application shell is
-the active batch. No release candidate claim is made.
+The repository has a playable localized Android application, deterministic
+cue physics, 8-ball and 9-ball rules, offline practice, rules-respecting AI,
+local two-player, persistent progress/settings, accessibility controls, and a
+large automated suite. Documentation and Android release hardening are active.
+No release candidate claim is made.
 
 ## Active release gates
 
@@ -23,11 +24,11 @@ the active batch. No release candidate claim is made.
 | Deterministic physics tests | Passed (16 core/vector + physics tests) |
 | 8-ball rules tests | Passed (11 tests) |
 | 9-ball rules tests | Passed (6 tests) |
-| Offline practice and vs AI | Pending |
-| Local two-player | Pending |
-| English and Hindi localization | Pending |
-| Analyzer has zero errors | Pending |
-| Tests have zero known failures | Pending |
+| Offline practice and vs AI | Implemented; widget/AI tests pass |
+| Local two-player | Implemented; full manual match pending |
+| English and Hindi localization | Implemented; review status tracked |
+| Analyzer has zero errors | Passed after UI batch |
+| Tests have zero known failures | Passed; final rerun scheduled |
 | Android debug APK builds | Pending |
 | Android release AAB configuration | In progress |
 | License and notices reviewed | In progress |
